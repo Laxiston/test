@@ -1,0 +1,86 @@
+mixin head(page)
+    -
+        var ver = '?v=kPglQ7gBjz',
+        nameApp = 'FreshTag';
+
+    base(href='/')
+    meta(name='fragment', content='!')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    title= page.title || ''
+    meta(name='description', content= page.description || '')
+    meta(name='keywords', content= page.keyword || '')
+    meta(name='author', content= page.author || '')
+
+    meta(name='robots', content='noodp, noydir')
+    meta(name='imagetoolbar', content='no')
+    meta(name='msthemecompatible', content='no')
+    meta(name='cleartype', content='no')
+    meta(name='HandheldFriendly', content='true')
+    meta(name='format-detection', content='telephone=no')
+    meta(name='format-detection', content='address=no')
+    meta(name='google', content='notranslate')
+    meta(name='mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+    meta(name='msapplication-tooltip', content='#{nameApp}.ch')
+
+    //-each icon in favicons.list.apple
+        link(rel='apple-touch-icon', sizes= icon, href=favicons.path + '/apple-touch-icon-#{icon}.png#{ver}')
+
+    //-each icon in favicons.list.icons
+        link(rel='icon', type='image/png', href=favicons.path + '/favicon-#{icon}.png#{ver}', sizes= icon)
+
+    //-link(rel='icon', type='image/png', href=favicons.path + '/android-chrome-192x192.png#{ver}', sizes='192x192')
+    //-link(rel='manifest', href=favicons.path + '/manifest.json#{ver}')
+    //-link(rel='mask-icon', href=favicons.path + '/safari-pinned-tab.svg#{ver}', color='#d12e34')
+    //-meta(name='apple-mobile-web-app-title', content='#{nameApp}.ch')
+    //-meta(name='application-name', content='#{nameApp}.ch')
+    //-link(rel='shortcut icon', href=favicons.path + '/favicon.ico#{ver}')
+    //-meta(name='msapplication-TileColor', content='#ffc40d')
+    //-meta(name='msapplication-TileImage', content=favicons.path + '/mstile-144x144.png#{ver}')
+    //-meta(name='msapplication-config', content=favicons.path + '/browserconfig.xml#{ver}')
+    //-meta(name='theme-color', content='#ffffff')
+
+    // Google Plus
+    //-meta(itemprop='name', content= page.title || '')
+    //-meta(itemprop='description', content= page.description || '')
+    //-meta(itemprop='image', content= siteUrl + '/static/images/general/sharing/freshtag-#{language}-1200x630.png')
+
+    // Twitter
+    //-meta(name='twitter:card', content='summary_large_image')
+    //-meta(name='twitter:site', content= siteUrl)
+    //-meta(name='twitter:title', content= page.title || '')
+    //-meta(name='twitter:description', content= page.description || '')
+    //-meta(name='twitter:creator', content='')
+    //-meta(name='twitter:image:src', content= siteUrl + '/static/images/general/sharing/freshtag-#{language}-1024x512.png')
+    //-meta(name='twitter:player', content='')
+    //-meta(property='twitter:url', content= siteUrl)
+
+    // Open Graph General (Facebook & Pinterest)
+    //-meta(property='og:title', content= page.title || '')
+    //-meta(property='og:description', content= page.description || '')
+    //-meta(property='og:image', content= siteUrl + '/static/images/general/sharing/freshtag-#{language}-1200x630.png')
+    //-meta(property='og:url', content= siteUrl)
+    //-meta(property='og:site_name', content='#{nameApp}.ch')
+
+    // Open Graph Article (Facebook & Pinterest)
+    //-meta(property='article:author', content='')
+    //-meta(property='article:section', content='Manufacture')
+    //-meta(property='article:tag', content='Technologies')
+    //-meta(property='article:published_time', content='')
+    //-meta(property='article:modified_time', content='')
+    //-meta(property='article:expiration_time', content='')
+
+    // VK
+    //-meta(name='title', content= page.title || '')
+    //-link(rel='image_src', href= siteUrl + '/static/images/general/sharing/freshtag-#{language}-1200x534.png')
+
+    //-link(rel='stylesheet', href='//fonts.googleapis.com/css?family=PT+Sans:700')
+    //-link(rel='stylesheet', href='//fonts.googleapis.com/icon?family=Material+Icons')
+    //-block customCss
+    //-if (env == 'development')
+        script(src='//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst')
+    script.
+        (function (H) {H.className = H.className.replace(/\bno-js\b/, 'js')})(document.documentElement)

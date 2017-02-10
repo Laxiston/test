@@ -1,0 +1,22 @@
+<!-- sidebar -->
+<div class="b-sidebar" id="sidebar" data-ng-if="specialClass !== 'core'" data-toggleable data-parent-active-class="app-slide-off">
+    <div data-perfect-scrollbar data-wheel-propagation="false" data-suppress-scroll-x="true" class="b-sidebar__container">
+        <div data-ui-view="sidebar"></div>
+    </div>
+</div>
+<!-- / sidebar -->
+<div class="b-page__content">
+    <!-- top navbar -->
+    <header data-ng-if="specialClass !== 'core'" data-ui-view="navbar" class="b-navbar"></header>
+    <!-- / top navbar -->
+    <!-- main content -->
+    <div class="b-page__main">
+        <!-- start: MAIN CONTENT -->
+        <div ui-view class="b-page__container fade-in-up" id="container"></div>
+        <!-- end: MAIN CONTENT -->
+    </div>
+    <!-- / main content -->
+</div>
+<!-- footer -->
+<footer class="b-page__footer" data-ng-if="specialClass !== 'core'" data-ui-view="footer"></footer>
+<!-- / footer -->

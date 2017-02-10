@@ -1,0 +1,19 @@
+extends ./tpls/layout
+
+block vars
+    -
+        var _name = 'index';
+        var page = {
+        name: _name,
+        title: __('title.index'),
+        description: '',
+        keyword: '',
+        author: '',
+        url: '',
+        og_image_url: '',
+        twc_site: '',
+        twc_image_url: '',
+        styles: [_name],
+        scripts: [_name]
+        };
+

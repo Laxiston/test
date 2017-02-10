@@ -1,0 +1,230 @@
+@import '~_variables';
+@import '~_mixins';
+@import '~_settings';
+@import '~_normalize';
+@import '~_reboot';
+
+.browserupgrade {
+    background: #ccc;
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+}
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    @include size(100%);
+}
+
+@include selection {
+    background: $blue;
+    text-shadow: none;
+    color: $white;
+}
+
+#{$all-text-inputs-focus},
+#{$all-button-inputs-focus} {
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    transition: all 300ms $ease-in-out-cubic;
+
+    @include hover-focus-active {
+        outline: none;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-weight: normal;
+}
+
+ul, ol, li {
+    @include nl;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+.collapse {
+    display: none;
+
+    &.in {
+        display: block;
+    }
+}
+
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    @include transition(height 350ms ease);
+}
+
+.fade {
+    opacity: 0;
+    visibility: hidden;
+    @include transition(opacity 400ms 0ms, visibility 0ms 400ms);
+    //@include transition(opacity 150ms linear);
+
+    &.in {
+        opacity: 1;
+        visibility: visible;
+        @include transition(opacity 400ms 0ms, visibility 0ms 0ms);
+        //@include transition(opacity 150ms linear);
+    }
+}
+
+#loading-bar {
+    .bar {
+        background: $primary;
+    }
+
+    .peg {
+        box-shadow: 1px 0 6px 1px $primary;
+    }
+}
+
+loading {
+    &.hide {
+        display: none;
+    }
+
+    &.animate {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f5faff;
+        z-index: 120;
+    }
+
+    .loader {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -25px;
+        @include size(50px, 40px);
+        text-align: center;
+        font-size: rem(10);
+
+        & > div {
+            background: $primary;
+            @include size(6px, 100%);
+            margin: 0 3px 0 0;
+            display: inline-block;
+            animation: loader 1200ms infinite ease-in-out;
+
+            &.loader__spin2 {
+                animation-delay: -1100ms;
+            }
+
+            &.loader__spin3 {
+                animation-delay: -1000ms;
+            }
+
+            &.loader__spin4 {
+                animation-delay: -900ms;
+            }
+
+            &.loader__spin5 {
+                animation-delay: -800ms;
+            }
+        }
+    }
+}
+
+@keyframes loader {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1.0);
+    }
+}
+
+@include b('b-page') {
+    position: relative;
+    @include size(100%, auto);
+    min-height: 100vh;
+    overflow: hidden;
+
+    @include e('content') {
+        height: 100%;
+        @include pie;
+    }
+
+    @include e('main') {
+        min-height: 100%;
+        position: relative;
+
+        @include max(sm) {
+            //:todo header height
+            padding-top: 0;
+        }
+
+        @include min(md) {
+            margin-left: $sideBar-width;
+
+            .b-page--sidebar_closed & {
+                margin-left: $sideBar-closed-width;
+            }
+        }
+    }
+
+    @include e('container') {
+        max-width: none;
+        width: 100%;
+        display: inline-block;
+        padding-bottom: $footer-height;
+    }
+
+    @include e('footer') {
+        background-color: $header-color;
+        color: $headerText-color;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        transform: translate3d(0, 0, 0);
+        //z-index: 1088;
+
+        @include min(md) {
+            margin-left: $sideBar-width;
+
+            .b-page--sidebar_closed & {
+                margin-left: $sideBar-closed-width;
+            }
+        }
+    }
+
+    @include e('footer-inner') {
+        padding: 0 20px;
+        line-height: $footer-height;
+    }
+
+    @include max(sm) {
+        width: 100%;
+
+        @include e('content') {
+            position: relative;
+            width: 100%;
+            transition: transform 300ms ease 0ms;
+        }
+    }
+}

@@ -1,0 +1,140 @@
+$prefix-for-webkit: false;
+$prefix-for-mozilla: false;
+$prefix-for-microsoft: false;
+$prefix-for-opera: false;
+$prefix-for-spec: false;
+$enable-flex: true;
+
+$enable-transitions: false;
+
+// Default Colour Settings
+$primary: #007aff;
+$lightPrimary: lighten($primary, 10%);
+$darkPrimary: darken($primary, 10%);
+$success: #5cb85c;
+$info: #46b8da;
+$warning: #eea236;
+$danger: #d43f3a;
+// Blue
+$blue: #5f8295;
+$lightBlue: lighten($blue, 10%);
+$darkBlue: darken($blue, 10%);
+
+$black: #2c2f3b; // Black
+$white: #fff; // White
+
+$text-color: #8e8e93;
+$text-dark: darken($text-color, 20%);
+$text-light: lighten($text-color, 20%);
+$link-color: $primary;
+
+$app-background: #f8f8f8;
+$elements-color: #1fbba6;
+//NAV HEADER COLORS
+$header-color: #2c3543;
+$headerBorder-color: transparent;
+$headerText-color: $white;
+$headerElements-color: #5f8295;
+
+// Grid breakpoints
+//
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+    xs: 320px,
+    sm: 768px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1366px,
+    xxl: 1680px
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+    sm: 720px,
+    md: 960px, // 992
+    lg: 1140px, // 1024
+    xl: 1306px, // 1366
+    xxl: 1620px // 1680
+);
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12;
+$grid-gutter-width-base: 20px; // 20px
+
+$grid-gutter-widths: (
+    xs: $grid-gutter-width-base,
+    sm: $grid-gutter-width-base,
+    md: $grid-gutter-width-base,
+    lg: $grid-gutter-width-base,
+    xl: $grid-gutter-width-base,
+    xxl: $grid-gutter-width-base
+);
+
+$font: 'Roboto', sans-serif;
+$font-serif: 'Roboto Slab', serif;
+$font-monospace: 'PT Mono', monospace;
+$font-default: Helvetica, Arial, sans-serif;
+
+// SETTINGS BOOTSTRAP
+// Create greyscale
+$grey: #464a4c;
+$grey-dark: #292b2c;
+$grey-light: #636c72;
+$grey-lighter: #eceeef;
+$grey-lightest: #f7f7f9;
+
+$font-family-base: $font;
+$font-weight-base: 300;
+//$em-base: 12px;
+//$font-size-root: $em-base;
+$line-height-base: 1.15;
+$body-bg: $app-background;
+$body-color: $grey-dark;
+
+/// CSS cubic-bezier timing functions. Timing functions courtesy of jquery.easie (github.com/jaukia/easie)
+///
+/// Timing functions are the same as demoed here: http://jqueryui.com/resources/demos/effect/easing.html
+///
+/// @type cubic-bezier
+
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-in-quart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+$header-height: 65px;
+$mobile-header-height: 50px;
+$sideBar-width: 260px;
+$sideBar-closed-width: 70px;
+$footer-height: 60px;
+$horizontal-menu-height: 40px;
