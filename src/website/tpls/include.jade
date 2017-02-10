@@ -1,0 +1,22 @@
+//- inject:jade
+include head
+//- endinject
+
+-
+    var favicons = {
+        path: '/public/misc/favicons',
+        list: {
+            apple: ['57x57', '60x60', '72x72', '76x76', '114x114', '120x120', '144x144', '152x152', '180x180'],
+            icons: ['16x16', '32x32']
+        }
+    };
+
+    var bodyAttr = {};
+    var attributes = {};
+
+    var general = '/public/images/general';
+    var content = '/public/images/content';
+    var random = function(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    var development = function() { return env == 'development'}
+    var production = function() { return env == 'production'}

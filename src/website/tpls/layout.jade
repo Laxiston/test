@@ -1,0 +1,32 @@
+include include
+
+block vars
+    -
+        var _name = '';
+        var page = {
+            name: _name,
+            title: '',
+            description: '',
+            keyword: '',
+            author: '',
+            url: '',
+            og_image_url: '',
+            twc_site: '',
+            twc_image_url: '',
+            styles: [_name],
+            scripts: [_name]
+        };
+
+
+doctype html
+html(lang= language || 'de')
+    head
+        +head(page)
+
+    body(data-ng-cloak)&attributes(bodyAttr)
+        <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        #app&attributes(attributes)
+
+        block script

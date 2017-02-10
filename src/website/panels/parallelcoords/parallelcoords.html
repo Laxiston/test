@@ -1,0 +1,13 @@
+<span>Line type:</span>
+<div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Straight<span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li>
+            <input type="radio" id="straight" name="lineType" value="1" checked ng-click="$ctrl.setStraightLines()"><label for="straight">Straight</label>
+        </li>
+        <li>
+            <input type="radio" id="curved" name="lineType" value="2" ng-click="$ctrl.setCurvedLines()"><label for="curved">Curved</label>
+        </li>
+    </ul>
+</div>
+<div class='parallel-coords-container'></div>

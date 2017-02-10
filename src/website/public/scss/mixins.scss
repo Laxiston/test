@@ -1,0 +1,192 @@
+@charset "UTF-8";
+// Mixins.
+
+@mixin nl {
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+}
+
+@mixin pie {
+    &:before,
+    &:after {
+        display: table;
+        content: '';
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@function tracking( $target ) {
+    @return ($target / 1000) * 1em;
+}
+
+@function unicode($str){
+    @return unquote("\"") + unquote(str-insert($str, "\\", 1)) + unquote("\"");
+}
+
+// =========================================================
+// Framework grid generation
+// =========================================================
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@mixin container($gutter: $grid-gutter-width-base) {
+    @include make-container($gutter);
+    @each $breakpoint, $container-max-width in $container-max-widths {
+        @include media-breakpoint-up($breakpoint) {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+@mixin min($breakpoint) {
+    @if map-has-key($grid-breakpoints, $breakpoint) {
+        @include min-screen(breakpoint-min($breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin max($breakpoint) {
+    @if map-has-key($grid-breakpoints, $breakpoint) {
+        @include max-screen(breakpoint-max($breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+/// Strips the unit from a number.
+///
+/// @param {Number (With Unit)} $value
+///
+/// @example scss - Usage
+///   $dimension: strip-units(10em);
+///
+/// @example css - CSS Output
+///   $dimension: 10;
+///
+/// @return {Number (Unitless)}
+
+@function strip-units($value) {
+    @return ($value / ($value * 0 + 1));
+}
+
+// Convert pixels to rems
+// eg. for a relational value of 12px write rem(12)
+// Assumes $em-base is the font-size of <html>
+
+@function rem($pxval) {
+    $em-base: 16px !default;
+
+    @if not unitless($pxval) {
+        $pxval: strip-units($pxval);
+    }
+
+    $base: $em-base;
+
+    @if not unitless($base) {
+        $base: strip-units($base);
+    }
+
+    @return ($pxval / $base) * 1rem;
+}
+
+/// Outputs the spec and prefixed versions of the `::selection` pseudo-element.
+///
+/// @param {Bool} $current-selector [false]
+///   If set to `true`, it takes the current element into consideration.
+///
+/// @example scss - Usage
+///   .element {
+///     @include selection(true) {
+///       background-color: #ffbb52;
+///     }
+///   }
+///
+/// @example css - CSS Output
+///   .element::-moz-selection {
+///     background-color: #ffbb52;
+///   }
+///
+///   .element::selection {
+///     background-color: #ffbb52;
+///   }
+
+@mixin selection($current-selector: false) {
+    @if $current-selector {
+        &::-moz-selection {
+            @content;
+        }
+
+        &::selection {
+            @content;
+        }
+    } @else {
+        ::-moz-selection {
+            @content;
+        }
+
+        ::selection {
+            @content;
+        }
+    }
+}
+
+
+@function assign-inputs($inputs, $pseudo: null) {
+    $list: ();
+
+    @each $input in $inputs {
+        $input: unquote($input);
+        $input: if($pseudo, $input + ":" + $pseudo, $input);
+        $list: append($list, $input, comma);
+    }
+
+    @return $list;
+}
+
+$buttons-list: 'button',
+'input[type="button"]',
+'input[type="reset"]',
+'input[type="submit"]';
+
+$all-buttons:        assign-inputs($buttons-list);
+$all-buttons-active: assign-inputs($buttons-list, active);
+$all-buttons-focus:  assign-inputs($buttons-list, focus);
+$all-buttons-hover:  assign-inputs($buttons-list, hover);
+
+$all-button-inputs:        $all-buttons;
+$all-button-inputs-active: $all-buttons-active;
+$all-button-inputs-focus:  $all-buttons-focus;
+$all-button-inputs-hover:  $all-buttons-hover;
+
+$text-inputs-list: 'input[type="color"]',
+'input[type="date"]',
+'input[type="datetime"]',
+'input[type="datetime-local"]',
+'input[type="email"]',
+'input[type="month"]',
+'input[type="number"]',
+'input[type="password"]',
+'input[type="search"]',
+'input[type="tel"]',
+'input[type="text"]',
+'input[type="time"]',
+'input[type="url"]',
+'input[type="week"]',
+'input:not([type])',
+'textarea';
+
+$all-text-inputs:        assign-inputs($text-inputs-list);
+$all-text-inputs-active: assign-inputs($text-inputs-list, active);
+$all-text-inputs-focus:  assign-inputs($text-inputs-list, focus);
+$all-text-inputs-hover:  assign-inputs($text-inputs-list, hover);
